@@ -11,7 +11,7 @@ The foundational elements needed to get a specific keyboard working with ZMK can
 - A keymap, which binds each key position to a behavior, e.g. key press, mod-tap, momentary layer, in a set of layers.
 
 These three core architectural elements are defined per-keyboard, and _where_ they are defined depends on the specifics of how that
-keyboard works. For an overview on the general concepts of boards and shields, please see the [FAQs on boards and shields](../faq.md#why-boards-and-shields--why-not-just-keyboard).
+keyboard works. For an overview on the general concepts of boards and shields, please see the [FAQs on boards and shields](../faq.md#why-boards-and-shields-why-not-just-keyboard).
 
 ## Self-Contained Keyboard
 
@@ -30,11 +30,11 @@ in the `app/boards/${arch}/${board_name}` directory, e.g. `app/boards/arm/planck
   - A [chosen](https://docs.zephyrproject.org/2.5.0/guides/dts/intro.html#aliases-and-chosen-nodes) node named `zmk,kscan` which references the configured KSCAN driver (usually a GPIO matrix)
   - (Optional) A [chosen](https://docs.zephyrproject.org/2.5.0/guides/dts/intro.html#aliases-and-chosen-nodes) node named `zmk,matrix_transform` that defines the mapping from KSCAN row/column values to the logical key position for the keyboard.
 - A `board.cmake` file with CMake directives for how to flash to the device.
-- A `keymap/keymap.overlay` file that includes the default keymap for that keyboard. Users will be able to override this keymap in their user configs.
+- A `${board_name}.keymap` file that includes the default keymap for that keyboard. Users will be able to override this keymap in their user configs.
 
 ## Pro Micro Compatible Keyboard
 
-![Labelled Pro Micro pins](../assets/pro-micro/pro-micro-pins-labelled.jpg)
+![Labelled Pro Micro pins](../assets/interconnects/pro_micro/pinout.png)
 
 For keyboards that require a (usually Pro Micro compatible) add-on board to operate, the ZMK integration pieces are places
 in the _shield_ definition for that keyboard, allowing users to
